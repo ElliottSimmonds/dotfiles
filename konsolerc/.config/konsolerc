@@ -1,0 +1,15 @@
+[Desktop Entry]
+DefaultProfile=Elliott console.profile
+
+[General]
+ConfigVersion=1
+
+[MainWindow]
+MenuBar=Disabled
+
+[TabBar]
+NewTabButton=true
+TabBarVisibility=AlwaysShowTabBar
+
+[UiSettings]
+ColorScheme=
