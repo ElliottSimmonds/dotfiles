@@ -1,0 +1,6 @@
+alias zyp="sudo zypper"
+alias ff="fastfetch"
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias ll="ls -ll"
+alias c="clear"

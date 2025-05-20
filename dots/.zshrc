@@ -1,19 +1,20 @@
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.config/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/elliott/.zshrc'
 
-autoload -Uz compinit
+# tab autocompletion menu options
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
 compinit
-# End of lines added by compinstall
+_comp_options+=(globdots) # include hidden files
 
-# aliases
-alias zyp='sudo zypper'
-alias ff='fastfetch'
-alias ll='ls -ll'
+# load aliases
+source ~/.config/aliasrc
+
+# todo: setup auto suggestions and colours
+
+fastfetch
 
 eval "$(starship init zsh)"
