@@ -13,8 +13,11 @@ _comp_options+=(globdots) # include hidden files
 # load aliases
 source ~/.config/aliasrc
 
-# todo: setup auto suggestions and colours
-
 fastfetch
 
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# custom prompt
 eval "$(starship init zsh)"
+# syntax highlighting, should be last
+source ~/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
