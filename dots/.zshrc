@@ -3,8 +3,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 bindkey -e
 
-# tab autocompletion menu options
+# autocompletion options
 autoload -U compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
