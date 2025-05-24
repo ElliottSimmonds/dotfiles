@@ -1,23 +1,38 @@
 #!/bin/sh
+set -e
 
-ORIENTATION=$(xrandr --verbose | grep "LVDS-1" | sed "s/primary //" | awk '{print $5}')
+# device names are specific to my system
+ORIENTATION=$(xrandr --verbose | grep "LVDS-1" | awk '{print $6}')
 
-echo "$ORIENTATION"
+# echo "Current orientation: $ORIENTATION"
 
-# rotate screen by 90 degrees
-# sleeps ensure xinput command is applied
-if [[ "$ORIENTATION" == *"normal"* ]]; then
-    xrandr -o left
-    sleep 1
-    xinput set-prop "Wacom ISDv4 E6 Finger touch" "Coordinate Transformation Matrix" -1 0 1 0 -1 1 0 0 1
-elif [[ "$ORIENTATION" == *"left"* ]]; then
-    xrandr -o inverted
-    xinput set-prop "Wacom ISDv4 E6 Finger touch" "Coordinate Transformation Matrix" 0 0 0 0 0 0 0 0 0
-elif [[ "$ORIENTATION" == *"inverted"* ]]; then
-    xrandr -o right
-    sleep 1
-    xinput set-prop "Wacom ISDv4 E6 Finger touch" "Coordinate Transformation Matrix" -1 0 1 0 -1 1 0 0 1
-else 
-    xrandr -o normal
-    xinput set-prop "Wacom ISDv4 E6 Finger touch" "Coordinate Transformation Matrix" 0 0 0 0 0 0 0 0 0
-fi
+# these values may not work on all devices, but they work for mine
+MATRIX_NORMAL="1 0 0 0 1 0 0 0 1"
+MATRIX_LEFT="-1 0 1 0 -1 1 0 0 1"
+MATRIX_INVERTED="1 0 0 0 1 0 0 0 1"
+MATRIX_RIGHT="-1 0 1 0 -1 1 0 0 1"
+
+rotate_screen() {
+    local rotation=$1
+    local matrix=$2
+
+    xrandr -o $rotation
+    sleep 0.8
+    xinput set-prop "Wacom ISDv4 E6 Finger touch" "Coordinate Transformation Matrix" $matrix
+    xinput set-prop "Wacom ISDv4 E6 Pen stylus" "Coordinate Transformation Matrix" $matrix
+}
+
+case "$ORIENTATION" in
+    normal)
+        rotate_screen left "$MATRIX_LEFT"
+        ;;
+    left)
+        rotate_screen inverted "$MATRIX_INVERTED"
+        ;;
+    inverted)
+        rotate_screen right "$MATRIX_RIGHT"
+        ;;
+    right|*)
+        rotate_screen normal "$MATRIX_NORMAL"
+        ;;
+esac
