@@ -1,0 +1,43 @@
+[056A:00E6]
+CurrentProfileEntry=-1
+
+[056A:00E6][Default][eraser]
+Area=0 0 0 0
+Button1=1
+Button2=2
+Button3=3
+Mode=absolute
+PressureCurve=0 0 100 100
+RawSample=4
+Rotate=auto
+Suppress=2
+TabletPcButton=off
+Threshold=27
+
+[056A:00E6][Default][pad]
+AbsWheelDown=5
+AbsWheelUp=4
+
+[056A:00E6][Default][stylus]
+Area=0 0 0 0
+Button1=1
+Button2=2
+Button3=3
+Mode=absolute
+PressureCurve=0 0 100 100
+RawSample=4
+Rotate=auto
+Suppress=2
+TabletPcButton=off
+Threshold=27
+
+[056A:00E6][Default][touch]
+Area=0 0 0 0
+Gesture=off
+InvertScroll=off
+Mode=absolute
+Rotate=auto
+ScrollDistance=20
+TapTime=250
+Touch=on
+ZoomDistance=50

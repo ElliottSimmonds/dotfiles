@@ -1,0 +1,15 @@
+[ExtractDialog]
+1366x768 screen: Height=512
+1366x768 screen: Width=910
+DirHistory[$e]=$HOME/Downloads/Roboto-Fonts/
+
+[General]
+Version=202
+ViewPropsTimestamp=2025,5,18,17,48,26.327
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
